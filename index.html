@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salesforce Messaging Chat Portal</title>
-
-  <!-- Prechat Hidden Field Setup -->
-  <script>
+<!-- 
+  Prechat Hidden Field Setup -->
+ <!-- <script>
     window.addEventListener("onEmbeddedMessagingReady", () => {
       console.log("Inside Messaging Ready Block");
 
@@ -17,8 +17,8 @@
       embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
         "User_Id": userId
       });
-    });
-  </script>
+    }); 
+  </script> -->
 
   <style>
     body {
@@ -70,6 +70,10 @@
 
   <!-- Init Embedded Messaging -->
   <script type="text/javascript">
+    window.addEventListener("onEmbeddedMessagingReady", () => {            
+	  console.log( "Inside Prechat API!!" );
+	  embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields( { "User_Id" : "Test123" } );
+    });
     function initEmbeddedMessaging() {
       try {
         embeddedservice_bootstrap.settings.language = "en_US"; // Example: en or en-US
