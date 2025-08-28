@@ -4,27 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salesforce Messaging Chat Portal</title>
+
+  <!-- Prechat Hidden Field Setup -->
   <script>
-	window.addEventListener(
-		"onEmbeddedMessagingReady", () => {
-			console.log(
-				'Inside Messaging Ready Block'
-			);
-			let userId = $A.get(
-				'$SObjectType.CurrentUser.Id'
-			);
-			console.log( 
-				'User Id', 
-				userId
-			);
-			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(
-				{
-					'User_Id' : userId
-				}
-			);
-		}
-	);
-</script>
+    window.addEventListener("onEmbeddedMessagingReady", () => {
+      console.log("Inside Messaging Ready Block");
+
+      // ⚠️ Replace this with actual user id (cannot use $A.get in plain HTML)
+      let userId = "005XXXXXXXXXXXX"; 
+      console.log("User Id", userId);
+
+      embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+        "User_Id": userId
+      });
+    });
+  </script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -72,28 +67,32 @@
   <footer>
     &copy; 2025 My Company !
   </footer>
- 
-  <script type='text/javascript'></script>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-			embeddedservice_bootstrap.init(
-				'00DD4000000Ht4B',
-				'TestMIAW',
-				'https://ex1731392600076--sdodev.sandbox.my.site.com/ESWTestMIAW1756294920887',
-				{
-					scrt2URL: 'https://ex1731392600076--sdodev.sandbox.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://ex1731392600076--sdodev.sandbox.my.site.com/ESWTestMIAW1756294920887/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <!-- Init Embedded Messaging -->
+  <script type="text/javascript">
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = "en_US"; // Example: en or en-US
 
+        embeddedservice_bootstrap.init(
+          "00DD4000000Ht4B", // Org Id
+          "TestMIAW",        // Deployment Name
+          "https://ex1731392600076--sdodev.sandbox.my.site.com/ESWTestMIAW1756294920887", // Embedded Service Endpoint
+          {
+            scrt2URL: "https://ex1731392600076--sdodev.sandbox.my.salesforce-scrt.com"
+          }
+        );
+      } catch (err) {
+        console.error("Error loading Embedded Messaging: ", err);
+      }
+    }
+  </script>
 
- 
+  <!-- Load Salesforce Embedded Service Script -->
+  <script 
+    type="text/javascript" 
+    src="https://ex1731392600076--sdodev.sandbox.my.site.com/ESWTestMIAW1756294920887/assets/js/bootstrap.min.js" 
+    onload="initEmbeddedMessaging()">
+  </script>
 </body>
 </html>
