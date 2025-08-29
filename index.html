@@ -74,7 +74,7 @@
 	  console.log( "Inside Prechat API!!" );
 	  embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields( { "UserId" : "Test123", "firstName" : "Pranjali" } );
     });*/
-    window.addEventListener("onEmbeddedMessagingReady", e => {
+   /* window.addEventListener("onEmbeddedMessagingReady", e => {
     embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
         "_firstName": {
             "value": "Test",
@@ -97,31 +97,25 @@
             "isEditableByEndUser": true
         }
     });
-});
+});*/
 
     function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = "en_US"; // Example: en or en-US
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-        embeddedservice_bootstrap.init(
-          "00DD4000000Ht4B", // Org Id
-          "TestMIAW",        // Deployment Name
-          "https://ex1731392600076--sdodev.sandbox.my.site.com/ESWTestMIAW1756294920887", // Embedded Service Endpoint
-          {
-            scrt2URL: "https://ex1731392600076--sdodev.sandbox.my.salesforce-scrt.com"
-          }
-        );
-      } catch (err) {
-        console.error("Error loading Embedded Messaging: ", err);
-      }
-    }
-  </script>
-
-  <!-- Load Salesforce Embedded Service Script -->
-  <script 
-    type="text/javascript" 
-    src="https://ex1731392600076--sdodev.sandbox.my.site.com/ESWTestMIAW1756294920887/assets/js/bootstrap.min.js" 
-    onload="initEmbeddedMessaging()">
-  </script>
+			embeddedservice_bootstrap.init(
+				'00DD20000008xIk',
+				'CXO_Provider_Support_Enhance_Chat',
+				'https://mckpharma2--agentdev.sandbox.my.site.com/ESWCXOProviderSupportE1756475681461',
+				{
+					scrt2URL: 'https://mckpharma2--agentdev.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://mckpharma2--agentdev.sandbox.my.site.com/ESWCXOProviderSupportE1756475681461/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
